@@ -1887,8 +1887,8 @@ nav {
 @media (max-width: 500px) { .tab { padding: 8px 12px; font-size: 13px; } }
 
 /* PÁGINAS */
-.pagina { display: none; padding-top: 112px; padding-bottom: 80px; min-height: 100vh; }
-.pagina.ativa { display: block; }
+/* .pagina removido - usar .aba-suporte */
+/* .pagina.ativa removido - usar .aba-suporte.ativa */
 .container { max-width: 800px; margin: 0 auto; padding: 0 5vw; }
 
 /* CARD */
@@ -4145,7 +4145,6 @@ function toggleFaq(el) {
   document.querySelectorAll('.faq-item.aberto').forEach(i => i.classList.remove('aberto'));
   if (!estaAberto) item.classList.add('aberto');
 }
-</script>
 </div>
 
 <script>
@@ -4184,24 +4183,25 @@ document.addEventListener('click', function(e) {
     e.preventDefault();
     navegar(mapa[href]);
     // aba suporte: se for #numeros, ativar aba números
-    if (href === 'rcd_suporte.html#numeros') {
-      setTimeout(() => {
+    // Controle de abas do suporte baseado na âncora
+    setTimeout(() => {
+      if (href === 'rcd_suporte.html#numeros') {
         const tabNumeros = document.querySelector('#site-suporte .tab:nth-child(2)');
         if (tabNumeros) tabNumeros.click();
-      }, 50);
-    }
-    if (href === 'rcd_suporte.html#parceiros') {
-      setTimeout(() => {
-        // Abrir aba FAQ
+      } else if (href === 'rcd_suporte.html#parceiros') {
+        // Abrir aba FAQ e selecionar grupo parceiros de formação
         const tabFaq = document.querySelector('#site-suporte .tab:nth-child(3)');
         if (tabFaq) tabFaq.click();
-        // Selecionar grupo parceiros de formação
         setTimeout(() => {
           const tabParceiro = document.querySelector('#site-suporte .faq-tab:nth-child(4)');
           if (tabParceiro) tabParceiro.click();
         }, 80);
-      }, 50);
-    }
+      } else {
+        // Para qualquer outro link para suporte: abrir quem-somos (aba 1)
+        const tabQuemSomos = document.querySelector('#site-suporte .tab:nth-child(1)');
+        if (tabQuemSomos) tabQuemSomos.click();
+      }
+    }, 50);
     return;
   }
 
