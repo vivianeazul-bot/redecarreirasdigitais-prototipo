@@ -6,14 +6,19 @@
 <title>Rede Carreiras Digitais</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-/* ── RESET GLOBAL ── */
+
+/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── PÁGINA WRAPPER ── */
-.pagina-site { display: none; }
-.pagina-site.ativa { display: block; }
+/* ── SISTEMA DE PÁGINAS ── */
+.pg { display: none !important; }
+.pg.ativa { display: block !important; }
 
-/* ── GATEWAY ── */
+/* ── ABAS DO SUPORTE ── */
+.aba-sup { display: none !important; }
+.aba-sup.ativa { display: block !important; }
+
+/* ── CSS GATEWAY ── */
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -974,7 +979,7 @@
   .btn-hero-sec:hover { background: rgba(255,255,255,0.15); }
 
 
-/* ── TALENTO (prefixado) ── */
+/* ── CSS TALENTO ── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1544,7 +1549,7 @@ nav {
 .diag-prog-item.atual { background: var(--azul); }
 
 
-/* ── EMPRESA ── */
+/* ── CSS EMPRESA ── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1838,7 +1843,7 @@ nav {
 .ficha-back:hover { color: rgba(255,255,255,0.85); }
 
 
-/* ── SUPORTE ── */
+/* ── CSS SUPORTE ── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -1887,8 +1892,8 @@ nav {
 @media (max-width: 500px) { .tab { padding: 8px 12px; font-size: 13px; } }
 
 /* PÁGINAS */
-/* .pagina removido - usar .aba-suporte */
-/* .pagina.ativa removido - usar .aba-suporte.ativa */
+
+
 .container { max-width: 800px; margin: 0 auto; padding: 0 5vw; }
 
 /* CARD */
@@ -2004,20 +2009,15 @@ nav {
 .btn-azul:hover { background: var(--azul-medio); }
 
 
-
-/* ── ABAS SUPORTE (renomeado para evitar conflito) ── */
-.aba-suporte { display: none; }
-.aba-suporte.ativa { display: block; }
-
 </style>
 </head>
 <body>
 
-<!-- ══ GATEWAY ══ -->
-<div class="pagina-site ativa" id="site-gateway">
+<!-- GATEWAY -->
+<div class="pg ativa" id="pg-gateway">
 <!-- NAV -->
 <nav>
-  <a href="rcd_gateway.html" class="nav-logo">
+  <a href="#" data-nav="gateway" class="nav-logo">
     <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
       <circle cx="16" cy="16" r="3" fill="#1B3A6B"/>
       <circle cx="6" cy="10" r="2.5" fill="#E07B39"/>
@@ -2036,9 +2036,9 @@ nav {
   </a>
   <ul class="nav-links">
     <li><a href="#como-funciona">Como funciona</a></li>
-    <li><a href="rcd_suporte.html">Quem somos</a></li>
-    <li><a href="rcd_suporte.html#numeros">Números</a></li>
-    <li><a href="rcd_jornada_talento.html" class="nav-cta">Acessar a Rede →</a></li>
+    <li><a href="#" data-nav="suporte">Quem somos</a></li>
+    <li><a href="#" data-nav="suporte" data-aba="numeros">Números</a></li>
+    <li><a href="#" data-nav="talento" class="nav-cta">Acessar a Rede →</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#404040" stroke-width="1.5">
@@ -2086,11 +2086,11 @@ nav {
         A Rede Carreiras Digitais conecta quem quer entrar no mercado de tecnologia a formações qualificadas e oportunidades de emprego — e aproxima as empresas dos talentos de que precisam.
       </p>
       <div class="hero-btn-group">
-        <a href="rcd_jornada_talento.html" class="btn-hero-principal">
+        <a href="#" data-nav="talento" class="btn-hero-principal">
           Quero começar minha carreira digital
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a href="rcd_jornada_empresa.html" class="btn-hero-sec">
+        <a href="#" data-nav="empresa" class="btn-hero-sec">
           Sou empresa
         </a>
       </div>
@@ -2104,7 +2104,7 @@ nav {
       <div class="perfis-grid">
 
         <!-- JOVEM -->
-        <a href="rcd_jornada_talento.html" class="perfil-card jovem">
+        <a href="#" data-nav="talento" class="perfil-card jovem">
           <div class="perfil-card-top">
             <div class="perfil-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2123,7 +2123,7 @@ nav {
         </a>
 
         <!-- EMPRESA -->
-        <a href="rcd_jornada_empresa.html" class="perfil-card empresa" id="empresa">
+        <a href="#" data-nav="empresa" class="perfil-card empresa" id="empresa">
           <div class="perfil-card-top">
             <div class="perfil-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2143,7 +2143,7 @@ nav {
         </a>
 
         <!-- PARCEIRO -->
-        <a href="rcd_suporte.html#parceiros" class="perfil-card parceiro" id="parceiros-formacao">
+        <a href="#" data-nav="suporte" class="perfil-card parceiro" id="parceiros-formacao">
           <div class="perfil-card-top">
             <div class="perfil-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2337,12 +2337,12 @@ nav {
     <h2 class="section-title">Tem vaga com o<br>seu nome no digital.</h2>
     <p class="section-sub">A Rede organiza o caminho — do diagnóstico de perfil até o encaminhamento para a formação certa. Acesso gratuito.</p>
     <div class="cta-botoes">
-      <a href="rcd_jornada_talento.html" class="btn btn-laranja">
+      <a href="#" data-nav="talento" class="btn btn-laranja">
         Quero entrar no mercado de tecnologia
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7.5h9M9 3.5l4 4-4 4"/></svg>
       </a>
-      <a href="rcd_jornada_empresa.html" class="btn btn-outline">Sou empresa</a>
-      <a href="rcd_suporte.html#parceiros" class="btn btn-outline-verde">Sou parceiro de formação</a>
+      <a href="#" data-nav="empresa" class="btn btn-outline">Sou empresa</a>
+      <a href="#" data-nav="suporte" class="btn btn-outline-verde">Sou parceiro de formação</a>
     </div>
     <p class="cta-manifesto">"Uma ponte entre aprendizagem e oportunidade. Um movimento para impulsionar o Brasil digital."</p>
   </div>
@@ -2360,11 +2360,11 @@ nav {
 </footer>
 </div>
 
-<!-- ══ TALENTO ══ -->
-<div class="pagina-site" id="site-talento">
+<!-- TALENTO -->
+<div class="pg" id="pg-talento">
 <!-- NAV -->
 <nav>
-  <a href="rcd_gateway.html" class="nav-logo">
+  <a href="#" data-nav="gateway" class="nav-logo">
     <svg class="nav-logo-mark" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="3" fill="#1B3A6B"/>
       <circle cx="5" cy="9" r="2.5" fill="#E07B39"/>
@@ -2378,7 +2378,7 @@ nav {
     </svg>
     <span class="nav-logo-text">Rede Carreiras Digitais</span>
   </a>
-  <a href="rcd_gateway.html" class="nav-back">
+  <a href="#" data-nav="gateway" class="nav-back">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4l-4 4 4 4"/></svg>
     Início
   </a>
@@ -2963,21 +2963,21 @@ nav {
       A Rede Carreiras Digitais orienta e encaminha. A inscrição, a formação e a contratação acontecem nos sistemas dos parceiros e empresas.<br>
       <em style="font-style: italic;">Uma ponte entre aprendizagem e oportunidade. Um movimento para impulsionar o Brasil digital.</em>
       <div style="display: flex; justify-content: center; gap: 20px; margin-top: 16px; flex-wrap: wrap;">
-        <a href="rcd_gateway.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
-        <a href="rcd_jornada_empresa.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Sou empresa</a>
-        <a href="rcd_suporte.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Quem somos</a>
-        <a href="rcd_suporte.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Perguntas frequentes</a>
+        <a href="#" data-nav="gateway" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
+        <a href="#" data-nav="empresa" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Sou empresa</a>
+        <a href="#" data-nav="suporte" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Quem somos</a>
+        <a href="#" data-nav="suporte" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Perguntas frequentes</a>
       </div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ══ EMPRESA ══ -->
-<div class="pagina-site" id="site-empresa">
+<!-- EMPRESA -->
+<div class="pg" id="pg-empresa">
 <!-- NAV -->
 <nav>
-  <a href="rcd_gateway.html" class="nav-logo">
+  <a href="#" data-nav="gateway" class="nav-logo">
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="3" fill="#1B3A6B"/>
       <circle cx="5" cy="9" r="2.5" fill="#E07B39"/>
@@ -2991,7 +2991,7 @@ nav {
     </svg>
     <span class="nav-logo-text">Rede Carreiras Digitais</span>
   </a>
-  <a href="rcd_gateway.html" class="nav-back">
+  <a href="#" data-nav="gateway" class="nav-back">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4l-4 4 4 4"/></svg>
     Início
   </a>
@@ -3575,21 +3575,21 @@ nav {
       A Rede Carreiras Digitais conecta empresas a parceiros de formação. A seleção e a contratação permanecem nos processos da sua empresa.<br>
       <em>Uma ponte entre aprendizagem e oportunidade. Um movimento para impulsionar o Brasil digital.</em>
       <div style="display: flex; justify-content: center; gap: 20px; margin-top: 16px; flex-wrap: wrap;">
-        <a href="rcd_gateway.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
-        <a href="rcd_jornada_talento.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada do Talento</a>
-        <a href="rcd_suporte.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Quem somos</a>
-        <a href="rcd_suporte.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Perguntas frequentes</a>
+        <a href="#" data-nav="gateway" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
+        <a href="#" data-nav="talento" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada do Talento</a>
+        <a href="#" data-nav="suporte" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Quem somos</a>
+        <a href="#" data-nav="suporte" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Perguntas frequentes</a>
       </div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ══ SUPORTE ══ -->
-<div class="pagina-site" id="site-suporte">
+<!-- SUPORTE -->
+<div class="pg" id="pg-suporte">
 <!-- NAV -->
 <nav>
-  <a href="rcd_gateway.html" class="nav-logo">
+  <a href="#" data-nav="gateway" class="nav-logo">
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="3" fill="#1B3A6B"/>
       <circle cx="5" cy="9" r="2.5" fill="#E07B39"/>
@@ -3603,7 +3603,7 @@ nav {
     </svg>
     <span class="nav-logo-text">Rede Carreiras Digitais</span>
   </a>
-  <a href="rcd_gateway.html" class="nav-back">
+  <a href="#" data-nav="gateway" class="nav-back">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4l-4 4 4 4"/></svg>
     Início
   </a>
@@ -3619,7 +3619,7 @@ nav {
 <!-- ══════════════════════════════════════
      QUEM SOMOS
 ═══════════════════════════════════════ -->
-<div class="aba-suporte ativa" id="quem-somos">
+<div class="aba-sup ativa" id="quem-somos">
   <div class="container">
 
     <div class="page-hero">
@@ -3739,7 +3739,7 @@ nav {
 <!-- ══════════════════════════════════════
      NÚMEROS DA REDE
 ═══════════════════════════════════════ -->
-<div class="aba-suporte" id="numeros">
+<div class="aba-sup" id="numeros">
   <div class="container">
 
     <div class="page-hero">
@@ -3899,7 +3899,7 @@ nav {
 <!-- ══════════════════════════════════════
      FAQ
 ═══════════════════════════════════════ -->
-<div class="aba-suporte" id="faq">
+<div class="aba-sup" id="faq">
   <div class="container">
 
     <div class="page-hero">
@@ -4116,17 +4116,17 @@ nav {
     <!-- rodapé navegação cruzada -->
     <div style="text-align: center; padding: 20px 0; font-size: 12px; color: #aaa; line-height: 1.6;">
       <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <a href="rcd_gateway.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
-        <a href="rcd_jornada_talento.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada do Talento</a>
-        <a href="rcd_jornada_empresa.html" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada da Empresa</a>
+        <a href="#" data-nav="gateway" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">← Início</a>
+        <a href="#" data-nav="talento" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada do Talento</a>
+        <a href="#" data-nav="empresa" style="font-size: 12px; color: #aaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#1B3A6B'" onmouseout="this.style.color='#aaa'">Jornada da Empresa</a>
       </div>
     </div>
 
   </div>
 </div>
 function mostrarPagina(id, el) {
-  document.querySelectorAll('#site-suporte .aba-suporte').forEach(p => p.classList.remove('ativa'));
-  document.querySelectorAll('#site-suporte .tab').forEach(t => t.classList.remove('ativa'));
+  document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativa'));
   document.getElementById(id).classList.add('ativa');
   el.classList.add('ativa');
   window.scrollTo(0, 0);
@@ -4148,151 +4148,160 @@ function toggleFaq(el) {
 </div>
 
 <script>
-// ── NAVEGAÇÃO ENTRE SEÇÕES ──
-function navegar(secao, ancora) {
-  document.querySelectorAll('.pagina-site').forEach(p => p.classList.remove('ativa'));
-  document.getElementById('site-' + secao).classList.add('ativa');
+// ═══════════════════════════════════════
+// NAVEGAÇÃO GLOBAL
+// ═══════════════════════════════════════
+function navegar(secao, aba) {
+  // Esconder todas as páginas
+  document.querySelectorAll('.pg').forEach(function(p) {
+    p.classList.remove('ativa');
+  });
+  // Mostrar a página alvo
+  var pg = document.getElementById('pg-' + secao);
+  if (pg) pg.classList.add('ativa');
   window.scrollTo(0, 0);
-  // reset estados internos se necessário
-  if (secao === 'talento') {
-    if (typeof telaAtual !== 'undefined') irParaTela(1);
-  }
-  if (secao === 'empresa') {
-    if (typeof telaAtualEmp !== 'undefined') irParaTelaEmp(1);
+
+  // Lógica de abas do suporte
+  if (secao === 'suporte') {
+    setTimeout(function() {
+      if (aba === 'numeros') {
+        var btn = document.querySelector('#pg-suporte .tab:nth-child(2)');
+        if (btn) btn.click();
+      } else if (aba === 'parceiros') {
+        var btnFaq = document.querySelector('#pg-suporte .tab:nth-child(3)');
+        if (btnFaq) btnFaq.click();
+        setTimeout(function() {
+          var btnParceiro = document.querySelector('#pg-suporte .faq-tab:nth-child(4)');
+          if (btnParceiro) btnParceiro.click();
+        }, 100);
+      } else {
+        // Default: abrir quem-somos
+        var btnQS = document.querySelector('#pg-suporte .tab:nth-child(1)');
+        if (btnQS) btnQS.click();
+      }
+    }, 50);
   }
 }
 
-// Interceptar todos os cliques em links href="rcd_*.html"
+// Interceptar todos os cliques com data-nav
 document.addEventListener('click', function(e) {
-  const el = e.target.closest('a[href]');
+  var el = e.target.closest('[data-nav]');
   if (!el) return;
-  const href = el.getAttribute('href');
-  if (!href) return;
-
-  // Mapa de arquivos para seções
-  const mapa = {
-    'rcd_gateway.html': 'gateway',
-    'rcd_jornada_talento.html': 'talento',
-    'rcd_jornada_empresa.html': 'empresa',
-    'rcd_suporte.html': 'suporte',
-    'rcd_suporte.html#numeros': 'suporte',
-    'rcd_suporte.html#parceiros': 'suporte',
-  };
-
-  if (mapa[href]) {
-    e.preventDefault();
-    navegar(mapa[href]);
-    // aba suporte: se for #numeros, ativar aba números
-    // Controle de abas do suporte baseado na âncora
-    setTimeout(() => {
-      if (href === 'rcd_suporte.html#numeros') {
-        const tabNumeros = document.querySelector('#site-suporte .tab:nth-child(2)');
-        if (tabNumeros) tabNumeros.click();
-      } else if (href === 'rcd_suporte.html#parceiros') {
-        // Abrir aba FAQ e selecionar grupo parceiros de formação
-        const tabFaq = document.querySelector('#site-suporte .tab:nth-child(3)');
-        if (tabFaq) tabFaq.click();
-        setTimeout(() => {
-          const tabParceiro = document.querySelector('#site-suporte .faq-tab:nth-child(4)');
-          if (tabParceiro) tabParceiro.click();
-        }, 80);
-      } else {
-        // Para qualquer outro link para suporte: abrir quem-somos (aba 1)
-        const tabQuemSomos = document.querySelector('#site-suporte .tab:nth-child(1)');
-        if (tabQuemSomos) tabQuemSomos.click();
-      }
-    }, 50);
-    return;
-  }
-
-  // Links internos #ancora na mesma página: deixa o browser resolver
+  e.preventDefault();
+  var secao = el.getAttribute('data-nav');
+  var aba   = el.getAttribute('data-aba') || '';
+  navegar(secao, aba);
 });
 
-// ── JORNADA TALENTO ──
-let telaAtual = 1;
+// ═══════════════════════════════════════
+// JORNADA TALENTO
+// ═══════════════════════════════════════
+var telaAtual = 1;
+
 function irParaTela(num) {
-  document.querySelectorAll('#site-talento .tela').forEach(t => t.classList.remove('ativa'));
-  const t = document.getElementById('tela-' + num);
+  document.querySelectorAll('#pg-talento .tela').forEach(function(t) {
+    t.classList.remove('ativa');
+  });
+  var t = document.getElementById('tela-' + num);
   if (t) t.classList.add('ativa');
   telaAtual = num;
   window.scrollTo(0, 0);
-  atualizarSteps(num);
+  atualizarStepsTalento(num);
 }
-function atualizarSteps(atual) {
-  for (let i = 1; i <= 5; i++) {
-    const step = document.getElementById('step-' + i);
+
+function atualizarStepsTalento(atual) {
+  for (var i = 1; i <= 5; i++) {
+    var step = document.getElementById('step-' + i);
     if (!step) continue;
     step.classList.remove('active', 'done');
     if (i < atual) step.classList.add('done');
     else if (i === atual) step.classList.add('active');
-    const conn = document.getElementById('conn-' + i);
+    var conn = document.getElementById('conn-' + i);
     if (conn) conn.classList.toggle('done', i < atual);
   }
 }
+
 function selecionarOpcao(el) {
-  const grupo = el.closest('.opcoes-grid');
-  grupo.querySelectorAll('.opcao').forEach(o => o.classList.remove('selecionada'));
+  var grupo = el.closest('.opcoes-grid');
+  grupo.querySelectorAll('.opcao').forEach(function(o) { o.classList.remove('selecionada'); });
   el.classList.add('selecionada');
 }
-let trilhaSelecionada = 'ciberseg';
+
+var trilhaSelecionada = 'ciberseg';
 function selecionarTrilha(el, id) {
-  document.querySelectorAll('.trilha-card').forEach(c => c.classList.remove('selecionada'));
+  document.querySelectorAll('.trilha-card').forEach(function(c) { c.classList.remove('selecionada'); });
   el.classList.add('selecionada');
   trilhaSelecionada = id;
 }
 
-// ── JORNADA EMPRESA ──
-let telaAtualEmp = 1;
+// ═══════════════════════════════════════
+// JORNADA EMPRESA
+// ═══════════════════════════════════════
+var telaAtualEmp = 1;
+
 function irParaTelaEmp(num) {
-  document.querySelectorAll('#site-empresa .tela').forEach(t => t.classList.remove('ativa'));
-  const t = document.getElementById('tela-emp-' + num);
+  document.querySelectorAll('#pg-empresa .tela').forEach(function(t) {
+    t.classList.remove('ativa');
+  });
+  var t = document.getElementById('tela-emp-' + num);
   if (t) t.classList.add('ativa');
   telaAtualEmp = num;
   window.scrollTo(0, 0);
-  for (let i = 1; i <= 5; i++) {
-    const step = document.getElementById('step-emp-' + i);
+  for (var i = 1; i <= 5; i++) {
+    var step = document.getElementById('step-emp-' + i);
     if (!step) continue;
     step.classList.remove('active', 'done');
     if (i < num) step.classList.add('done');
     else if (i === num) step.classList.add('active');
-    const conn = document.getElementById('conn-emp-' + i);
+    var conn = document.getElementById('conn-emp-' + i);
     if (conn) conn.classList.toggle('done', i < num);
   }
 }
+
 function toggleChip(el) { el.classList.toggle('ativo'); }
+
 function toggleChipGrupo(el, grupo) {
-  el.closest('.chips-row').querySelectorAll('.chip').forEach(c => c.classList.remove('ativo'));
+  el.closest('.chips-row').querySelectorAll('.chip').forEach(function(c) { c.classList.remove('ativo'); });
   el.classList.add('ativo');
 }
+
 function selecionarParceiro(el, id) {
-  document.querySelectorAll('.parceiro-card').forEach(c => c.classList.remove('selecionado'));
+  document.querySelectorAll('.parceiro-card').forEach(function(c) { c.classList.remove('selecionado'); });
   el.classList.add('selecionado');
 }
+
 function selecionarEngajamento(el) {
-  document.querySelectorAll('.engajamento-opcao').forEach(o => o.classList.remove('selecionada'));
+  document.querySelectorAll('.engajamento-opcao').forEach(function(o) { o.classList.remove('selecionada'); });
   el.classList.add('selecionada');
 }
 
-// ── SUPORTE ──
+// ═══════════════════════════════════════
+// SUPORTE — ABAS E FAQ
+// ═══════════════════════════════════════
 function mostrarPagina(id, el) {
-  document.querySelectorAll('#site-suporte .aba-suporte').forEach(p => p.classList.remove('ativa'));
-  document.querySelectorAll('#site-suporte .tab').forEach(t => t.classList.remove('ativa'));
-  document.getElementById(id).classList.add('ativa');
-  el.classList.add('ativa');
+  document.querySelectorAll('#pg-suporte .aba-sup').forEach(function(p) { p.classList.remove('ativa'); });
+  document.querySelectorAll('#pg-suporte .tab').forEach(function(t) { t.classList.remove('ativa'); });
+  var alvo = document.getElementById(id);
+  if (alvo) alvo.classList.add('ativa');
+  if (el) el.classList.add('ativa');
   window.scrollTo(0, 0);
 }
+
 function mostrarFaqGrupo(id, el) {
-  document.querySelectorAll('.faq-grupo').forEach(g => g.classList.remove('ativo'));
-  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('ativo'));
-  document.getElementById('faq-' + id).classList.add('ativo');
-  el.classList.add('ativo');
+  document.querySelectorAll('.faq-grupo').forEach(function(g) { g.classList.remove('ativo'); });
+  document.querySelectorAll('.faq-tab').forEach(function(t) { t.classList.remove('ativo'); });
+  var alvo = document.getElementById('faq-' + id);
+  if (alvo) alvo.classList.add('ativo');
+  if (el) el.classList.add('ativo');
 }
+
 function toggleFaq(el) {
-  const item = el.closest('.faq-item');
-  const estaAberto = item.classList.contains('aberto');
-  document.querySelectorAll('.faq-item.aberto').forEach(i => i.classList.remove('aberto'));
+  var item = el.closest('.faq-item');
+  var estaAberto = item.classList.contains('aberto');
+  document.querySelectorAll('.faq-item.aberto').forEach(function(i) { i.classList.remove('aberto'); });
   if (!estaAberto) item.classList.add('aberto');
 }
 </script>
+
 </body>
 </html>
