@@ -2004,6 +2004,11 @@ nav {
 .btn-azul:hover { background: var(--azul-medio); }
 
 
+
+/* ── ABAS SUPORTE (renomeado para evitar conflito) ── */
+.aba-suporte { display: none; }
+.aba-suporte.ativa { display: block; }
+
 </style>
 </head>
 <body>
@@ -2138,7 +2143,7 @@ nav {
         </a>
 
         <!-- PARCEIRO -->
-        <a href="rcd_suporte.html" class="perfil-card parceiro" id="parceiros-formacao">
+        <a href="rcd_suporte.html#parceiros" class="perfil-card parceiro" id="parceiros-formacao">
           <div class="perfil-card-top">
             <div class="perfil-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2337,7 +2342,7 @@ nav {
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7.5h9M9 3.5l4 4-4 4"/></svg>
       </a>
       <a href="rcd_jornada_empresa.html" class="btn btn-outline">Sou empresa</a>
-      <a href="rcd_suporte.html" class="btn btn-outline-verde">Sou parceiro de formação</a>
+      <a href="rcd_suporte.html#parceiros" class="btn btn-outline-verde">Sou parceiro de formação</a>
     </div>
     <p class="cta-manifesto">"Uma ponte entre aprendizagem e oportunidade. Um movimento para impulsionar o Brasil digital."</p>
   </div>
@@ -3614,7 +3619,7 @@ nav {
 <!-- ══════════════════════════════════════
      QUEM SOMOS
 ═══════════════════════════════════════ -->
-<div class="pagina ativa" id="quem-somos">
+<div class="aba-suporte ativa" id="quem-somos">
   <div class="container">
 
     <div class="page-hero">
@@ -3734,7 +3739,7 @@ nav {
 <!-- ══════════════════════════════════════
      NÚMEROS DA REDE
 ═══════════════════════════════════════ -->
-<div class="pagina" id="numeros">
+<div class="aba-suporte" id="numeros">
   <div class="container">
 
     <div class="page-hero">
@@ -3894,7 +3899,7 @@ nav {
 <!-- ══════════════════════════════════════
      FAQ
 ═══════════════════════════════════════ -->
-<div class="pagina" id="faq">
+<div class="aba-suporte" id="faq">
   <div class="container">
 
     <div class="page-hero">
@@ -4120,8 +4125,8 @@ nav {
   </div>
 </div>
 function mostrarPagina(id, el) {
-  document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativa'));
+  document.querySelectorAll('#site-suporte .aba-suporte').forEach(p => p.classList.remove('ativa'));
+  document.querySelectorAll('#site-suporte .tab').forEach(t => t.classList.remove('ativa'));
   document.getElementById(id).classList.add('ativa');
   el.classList.add('ativa');
   window.scrollTo(0, 0);
@@ -4172,6 +4177,7 @@ document.addEventListener('click', function(e) {
     'rcd_jornada_empresa.html': 'empresa',
     'rcd_suporte.html': 'suporte',
     'rcd_suporte.html#numeros': 'suporte',
+    'rcd_suporte.html#parceiros': 'suporte',
   };
 
   if (mapa[href]) {
@@ -4182,6 +4188,18 @@ document.addEventListener('click', function(e) {
       setTimeout(() => {
         const tabNumeros = document.querySelector('#site-suporte .tab:nth-child(2)');
         if (tabNumeros) tabNumeros.click();
+      }, 50);
+    }
+    if (href === 'rcd_suporte.html#parceiros') {
+      setTimeout(() => {
+        // Abrir aba FAQ
+        const tabFaq = document.querySelector('#site-suporte .tab:nth-child(3)');
+        if (tabFaq) tabFaq.click();
+        // Selecionar grupo parceiros de formação
+        setTimeout(() => {
+          const tabParceiro = document.querySelector('#site-suporte .faq-tab:nth-child(4)');
+          if (tabParceiro) tabParceiro.click();
+        }, 80);
       }, 50);
     }
     return;
@@ -4257,7 +4275,7 @@ function selecionarEngajamento(el) {
 
 // ── SUPORTE ──
 function mostrarPagina(id, el) {
-  document.querySelectorAll('#site-suporte .pagina').forEach(p => p.classList.remove('ativa'));
+  document.querySelectorAll('#site-suporte .aba-suporte').forEach(p => p.classList.remove('ativa'));
   document.querySelectorAll('#site-suporte .tab').forEach(t => t.classList.remove('ativa'));
   document.getElementById(id).classList.add('ativa');
   el.classList.add('ativa');
